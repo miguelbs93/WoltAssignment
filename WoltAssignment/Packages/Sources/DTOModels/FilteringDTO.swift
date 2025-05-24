@@ -1,12 +1,12 @@
 // MARK: - FiltersDTO
 
-struct FiltersDTO: Decodable {
+public struct FiltersDTO: Decodable {
     let filters: [Filter]
 }
 
 // MARK: - FilterDTO
 
-struct FilterDTO: Decodable {
+public struct FilterDTO: Decodable {
     let id: String
     let name: String?
     let type: String
@@ -15,7 +15,7 @@ struct FilterDTO: Decodable {
 
 // MARK: - FilterValueDTO
 
-struct FilterValueDTO: Decodable {
+public struct FilterValueDTO: Decodable {
     let id: String
     let name: String
 }

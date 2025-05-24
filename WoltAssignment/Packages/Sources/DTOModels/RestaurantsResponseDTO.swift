@@ -1,4 +1,4 @@
-struct RestaurantsResponseDTO: Decodable {
+public struct RestaurantsResponseDTO: Decodable {
     let created: DateDTO
     let expiresInSeconds: Int
     let filtering: Filtering
@@ -22,7 +22,7 @@ struct RestaurantsResponseDTO: Decodable {
 
 // MARK: - DateDTO
 
-struct DateDTO: Decodable {
+public struct DateDTO: Decodable {
     let date: Int64
 
     enum CodingKeys: String, CodingKey {

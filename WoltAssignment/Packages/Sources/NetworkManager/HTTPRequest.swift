@@ -7,6 +7,8 @@ public protocol HTTPRequest {
     var parameters: [String: Any] { get }
 }
 
+// MARK: HTTPRequest
+
 public extension HTTPRequest {
     func urlRequest(with baseURL: URL) -> URLRequest {
         let components = URLComponents(
@@ -48,6 +50,8 @@ public extension HTTPRequest {
         }
     }
 }
+
+// MARK: - HTTPMethod
 
 public enum HTTPMethod: String {
     case delete

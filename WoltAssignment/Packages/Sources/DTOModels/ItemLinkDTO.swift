@@ -1,6 +1,6 @@
 // MARK: - LinkDTO
 
-struct ItemLinkDTO: Decodable {
+public struct ItemLinkDTO: Decodable {
     let target: String
     let targetSort: String
     let targetTitle: String

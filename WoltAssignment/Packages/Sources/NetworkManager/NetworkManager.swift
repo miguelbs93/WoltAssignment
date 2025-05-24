@@ -1,9 +1,13 @@
 import Foundation
 import UIKit
 
-final class NetworkManager: NetworkClient {
+public final class NetworkManager: NetworkClient {
     private let urlSession: URLSession
     private let imageCache = ImageCache()
+    
+    public var baseURL: URL {
+        return APIConfig.baseURL
+    }
     
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
@@ -11,8 +15,8 @@ final class NetworkManager: NetworkClient {
     
     // HTTP URL Request
     
-    func request<T: Decodable>(_ endpoint: Endpoint, responseType: T.Type) async throws -> T {
-        let request = endpoint.urlRequest
+    public func request<T: Decodable>(_ request: HTTPRequest, responseType: T.Type) async throws -> T {
+        let request = request.urlRequest(with: baseURL)
         let (data, response) = try await urlSession.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -32,7 +36,7 @@ final class NetworkManager: NetworkClient {
     
     // Download Image + Cache
     
-    func downloadImage(from url: URL) async throws -> UIImage {
+    public func downloadImage(from url: URL) async throws -> UIImage {
         if let cached = imageCache.image(for: url) {
             return cached
         }

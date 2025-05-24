@@ -1,6 +1,6 @@
 // MARK: - EndOfSectionDTO
 
-struct EndOfSectionDTO: Decodable {
+public struct EndOfSectionDTO: Decodable {
     let link: SectionLink
     let type: String
 }

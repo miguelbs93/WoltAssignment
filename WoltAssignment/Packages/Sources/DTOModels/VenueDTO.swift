@@ -1,6 +1,6 @@
 // MARK: - VenueDTO
 
-struct VenueDTO: Decodable {
+public struct VenueDTO: Decodable {
     let contentId: String
     let description: String
     let image: ImageDTO

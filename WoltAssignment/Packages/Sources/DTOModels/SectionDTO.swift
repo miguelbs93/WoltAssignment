@@ -1,6 +1,6 @@
 // MARK: - SectionDTO
 
-struct SectionDTO: Decodable {
+public struct SectionDTO: Decodable {
     let contentId: String
     let contentType: String?
     let endOfSection: EndOfSection?

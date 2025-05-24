@@ -1,5 +1,8 @@
 import Foundation
+import UIKit
 
-protocol NetworkClient {
-    func request<T: Decodable>(_ endpoint: Endpoint, responseType: T.Type) async throws -> T
+public protocol NetworkClient {
+    var baseURL: URL { get }
+    func request<T: Decodable>(_ request: HTTPRequest, responseType: T.Type) async throws -> T
+    func downloadImage(from url: URL) async throws -> UIImage
 }
