@@ -10,16 +10,16 @@ final class VenuesListViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
     
-    private let favoritesManager: FavoritesManager
+    private let favoritesManager: FavoritesStoring
     private let locationProvider: LocationProviding
     
-    private let service: GetVenuesService
+    private let service: GetVenuesServiceProtocol
     private var timerTask: Task<Void, Never>?
     
     init(
-        favoritesManager: FavoritesManager,
+        favoritesManager: FavoritesStoring,
         locationProvider: LocationProviding,
-        service: GetVenuesService
+        service: GetVenuesServiceProtocol
     ) {
         self.favoritesManager = favoritesManager
         self.locationProvider = locationProvider
@@ -52,7 +52,9 @@ final class VenuesListViewModel: ObservableObject {
                 longitude: location.longitude
             )
             
-            self.venues = result?.sections[1].items.prefix(15).map {
+            self.venues = result?.sections.first(where: {
+                $0.contentType == nil
+            })?.items.prefix(15).map {
                 $0.getVenue()
             } ?? []
             

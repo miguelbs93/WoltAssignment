@@ -32,11 +32,11 @@ final class MockLocationProvider: LocationProviding {
 }
 
 // MARK: - RestaurantsService
-
+@MainActor
 final class MockRestaurantsService: GetVenuesServiceProtocol {
     var mockResult: VenuesResponseDTO?
 
-    override func getVenues(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO? {
+    func getVenues(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO? {
         return mockResult
     }
 }

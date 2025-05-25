@@ -3,7 +3,7 @@ import NetworkManager
 
 // MARK: - GetRestaurantsServiceProtocol
 
-public protocol GetVenuesServiceProtocol {
+public protocol GetVenuesServiceProtocol: Sendable {
     func getVenues(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO?
 }
 
