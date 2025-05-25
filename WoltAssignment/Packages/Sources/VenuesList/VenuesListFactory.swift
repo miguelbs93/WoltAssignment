@@ -16,7 +16,7 @@ public final class VenuesListFactory {
             Location(latitude: 60.170085, longitude: 24.929569)
         ])
         
-        let service = GetRestaurantsService(networkManager: NetworkManager())
+        let service = GetVenuesService(networkManager: NetworkManager())
         let viewModel = VenuesListViewModel(
             favoritesManager: FavoritesManager(),
             locationProvider: locationProvider,

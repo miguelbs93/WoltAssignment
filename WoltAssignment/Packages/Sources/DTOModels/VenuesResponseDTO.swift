@@ -1,4 +1,4 @@
-public struct RestaurantsResponseDTO: Decodable, Sendable {
+public struct VenuesResponseDTO: Decodable, Sendable {
     public let created: DateDTO
     public let expiresInSeconds: Int
     public let filtering: FilteringDTO

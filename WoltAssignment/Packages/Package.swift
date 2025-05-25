@@ -78,8 +78,12 @@ let package = Package(
             name: "Managers"
         ),
         .testTarget(
-            name: "PackagesTests",
-            dependencies: ["NetworkManager"]
+            name: "VenuesListTests",
+            dependencies: [
+                "VenuesList",
+                "Managers",
+                "NetworkManager"
+            ]
         )
     ]
 )

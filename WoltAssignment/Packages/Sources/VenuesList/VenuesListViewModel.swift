@@ -13,19 +13,20 @@ final class VenuesListViewModel: ObservableObject {
     private let favoritesManager: FavoritesManager
     private let locationProvider: LocationProviding
     
-    private let service: GetRestaurantsService
+    private let service: GetVenuesService
     private var timerTask: Task<Void, Never>?
     
     init(
         favoritesManager: FavoritesManager,
         locationProvider: LocationProviding,
-        service: GetRestaurantsService
+        service: GetVenuesService
     ) {
         self.favoritesManager = favoritesManager
         self.locationProvider = locationProvider
         self.service = service
     }
     
+    /// Starts a timer that fetches venues from rotating locations every 10 seconds.
     @MainActor
     func startRotatingVenues() {
             timerTask?.cancel()
@@ -37,6 +38,7 @@ final class VenuesListViewModel: ObservableObject {
             }
         }
     
+    /// Fetches venues based on the current location, updating the UI state.
     @MainActor
     func fetchVenues() async {
         let location = locationProvider.nextLocation()
@@ -72,11 +74,13 @@ final class VenuesListViewModel: ObservableObject {
 // MARK: - Favorites
 
 extension VenuesListViewModel {
+    /// Toggles the favorite state for a venue.
     func toggleFavorite(for venue: Venue) {
         favoritesManager.toggleFavorite(id: venue.id)
         objectWillChange.send()
     }
 
+    /// Checks whether a venue is currently marked as favorite.
     func isFavorite(_ venue: Venue) -> Bool {
         favoritesManager.isFavorite(id: venue.id)
     }

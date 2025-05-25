@@ -1,7 +1,7 @@
 import NetworkManager
 import Foundation
 
-struct GetRestaurantsRequest: HTTPRequest {
+struct GetVenuesRequest: HTTPRequest {
     let latitude: Double
     let longitude: Double
     
