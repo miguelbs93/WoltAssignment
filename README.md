@@ -9,7 +9,13 @@ This project is an iOS app demonstrating an implementation of a feature for disc
   - Loading indicator
   - Animated transitions between location changes
   - Favorites functionality with persistence (UserDefaults - since im only storing the venue's id)
-- Uses Swift Concurrency (`async/await`)
-- Implements MVVM architecture
-- Using SPM for modularization
+  
 
+## Technologies Used
+
+- Swift
+- SwiftUI
+- MVVM Architecture
+- Async/Await for network calls
+- Unit Testing with XCTest
+- SPM for modularization
