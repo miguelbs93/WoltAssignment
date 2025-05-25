@@ -21,6 +21,14 @@ let package = Package(
         .library(
             name: "Services",
             targets: ["Services"]
+        ),
+        .library(
+            name: "VenuesList",
+            targets: ["VenuesList"]
+        ),
+        .library(
+            name: "Views",
+            targets: ["Views"]
         )
     ],
     targets: [
@@ -36,6 +44,19 @@ let package = Package(
             name: "Services",
             dependencies: [
                 "DTOModels",
+                "NetworkManager"
+            ]
+        ),
+        .target(
+            name: "VenuesList",
+            dependencies: [
+                "NetworkManager",
+                "Services"
+            ]
+        ),
+        .target(
+            name: "Views",
+            dependencies: [
                 "NetworkManager"
             ]
         ),
