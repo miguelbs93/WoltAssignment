@@ -4,7 +4,7 @@ import NetworkManager
 // MARK: - GetRestaurantsServiceProtocol
 
 public protocol GetVenuesServiceProtocol {
-    func getRestaurants(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO?
+    func getVenues(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO?
 }
 
 // MARK: - GetRestaurantsService
@@ -17,7 +17,7 @@ public final class GetVenuesService: GetVenuesServiceProtocol, Sendable {
         self.networkManager = networkManager
     }
     
-    public func getRestaurants(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO? {
+    public func getVenues(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO? {
         let request = GetVenuesRequest(latitude: latitude, longitude: longitude)
         return try await networkManager.request(request, responseType: VenuesResponseDTO.self)
     }

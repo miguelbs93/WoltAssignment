@@ -36,7 +36,7 @@ final class MockLocationProvider: LocationProviding {
 final class MockRestaurantsService: GetVenuesServiceProtocol {
     var mockResult: VenuesResponseDTO?
 
-    override func getRestaurants(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO? {
+    override func getVenues(latitude: Double, longitude: Double) async throws -> VenuesResponseDTO? {
         return mockResult
     }
 }

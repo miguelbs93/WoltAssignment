@@ -47,7 +47,7 @@ final class VenuesListViewModel: ObservableObject {
         }
         
         do {
-            let result = try await service.getRestaurants(
+            let result = try await service.getVenues(
                 latitude: location.latitude,
                 longitude: location.longitude
             )
