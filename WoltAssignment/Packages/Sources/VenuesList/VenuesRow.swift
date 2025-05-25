@@ -7,13 +7,14 @@ import NetworkManager
 struct VenuesRow: View {
     let venue: Venue
     let isFavorite: Bool
+    let networkManager: NetworkClient = NetworkManager()
     let onFavoriteTapped: () -> Void
     
     var body: some View {
         HStack {
             AsyncImageView(
                 url: URL(string: venue.imageURL)!,
-                networkManager: NetworkManager()
+                networkManager: networkManager
             )
             .frame(width: 60, height: 60)
             .clipShape(RoundedRectangle(cornerRadius: 8))
