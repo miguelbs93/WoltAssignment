@@ -11,6 +11,7 @@ struct Location {
 
 final class VenuesListViewModel: ObservableObject {
     @Published var venues: [Venue] = []
+    @Published var isLoading: Bool = false
     
     private let locations = [
         Location(latitude: 60.169418, longitude: 24.931618),
@@ -25,14 +26,29 @@ final class VenuesListViewModel: ObservableObject {
     ]
     
     private let service: GetRestaurantsService
+    private var currentIndex = 0
+    private var timerTask: Task<Void, Never>?
     
     init(service: GetRestaurantsService) {
         self.service = service
     }
     
     @MainActor
+    func startRotatingVenues() {
+            timerTask?.cancel()
+            timerTask = Task {
+                while !Task.isCancelled {
+                    await fetchVenues()
+                    try? await Task.sleep(nanoseconds: 10 * 1_000_000_000) // 10 seconds
+                    currentIndex = (currentIndex + 1) % locations.count
+                }
+            }
+        }
+    
+    @MainActor
     func fetchVenues() async {
-        let location = locations[6]
+        let location = locations[currentIndex]
+        isLoading = true
         
         do {
             let result = try await service.getRestaurants(
@@ -46,6 +62,8 @@ final class VenuesListViewModel: ObservableObject {
         } catch {
             debugPrint(error)
         }
+        
+        isLoading = false
     }
 }
 

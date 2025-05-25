@@ -5,13 +5,27 @@ public struct VenuesList: View {
     
     public var body: some View {
         NavigationView {
-            List(viewModel.venues) { item in
-                VenuesRow(venue: item)
+            VStack(spacing: 0) {
+                if viewModel.isLoading {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .padding(8)
+                        Spacer()
+                    }
+                    .background(Color(.systemGroupedBackground))
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                }
+                
+                List(viewModel.venues) { item in
+                    VenuesRow(venue: item)
+                }
             }
             .navigationTitle("Nearby Venues")
         }
-        .task {
-            await viewModel.fetchVenues()
+        .onAppear {
+            viewModel.startRotatingVenues()
         }
     }
 }

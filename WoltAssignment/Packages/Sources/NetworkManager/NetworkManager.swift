@@ -17,6 +17,7 @@ public final class NetworkManager: NetworkClient, @unchecked Sendable {
     
     public func request<T: Decodable>(_ request: HTTPRequest, responseType: T.Type) async throws -> T {
         let request = request.urlRequest(with: baseURL)
+        debugPrint("********* \(request.url?.absoluteString ?? "No URL")")
         let (data, response) = try await urlSession.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
