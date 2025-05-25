@@ -1,12 +1,12 @@
-public struct RestaurantsResponseDTO: Decodable {
-    let created: DateDTO
-    let expiresInSeconds: Int
-    let filtering: Filtering
-    let howSearchWorksLink: Link
-    let howSearchWorksUrl: String
-    let name: String
-    let pageTitle: String
-    let sections: [Section]
+public struct RestaurantsResponseDTO: Decodable, Sendable {
+    public let created: DateDTO
+    public let expiresInSeconds: Int
+    public let filtering: FilteringDTO
+    public let howSearchWorksLink: LinkDTO
+    public let howSearchWorksUrl: String
+    public let name: String
+    public let pageTitle: String
+    public let sections: [SectionDTO]
     
     enum CodingKeys: String, CodingKey {
         case created
@@ -20,10 +20,11 @@ public struct RestaurantsResponseDTO: Decodable {
     }
 }
 
+
 // MARK: - DateDTO
 
-public struct DateDTO: Decodable {
-    let date: Int64
+public struct DateDTO: Decodable, Sendable {
+    public let date: Int64
 
     enum CodingKeys: String, CodingKey {
         case date = "$date"

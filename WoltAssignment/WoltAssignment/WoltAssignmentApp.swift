@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import NetworkManager
+import VenuesList
 
 @main
 struct WoltAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VenuesListFactory.makeVenuesList()
         }
     }
 }

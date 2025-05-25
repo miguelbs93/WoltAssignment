@@ -1,7 +1,7 @@
 import SwiftUI
 import NetworkManager
 
-final class AsyncImageLoader: ObservableObject {
+final class AsyncImageLoader: @unchecked Sendable, ObservableObject {
     @Published var image: UIImage?
     private let networkManager: NetworkClient
 
@@ -11,11 +11,12 @@ final class AsyncImageLoader: ObservableObject {
         self.url = url
         self.networkManager = networkManager
     }
-
+    
+    @MainActor
     func load() async {
         do {
             let downloaded = try await networkManager.downloadImage(from: url)
-            image = downloaded
+            self.image = downloaded
         } catch {
             print("Image loading failed: \(error)")
         }

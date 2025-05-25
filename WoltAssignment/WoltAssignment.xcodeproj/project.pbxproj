@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ADB3B90A2DE309DF00E544F7 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = ADB3B9092DE309DF00E544F7 /* NetworkManager */; };
+		ADB3B90C2DE309DF00E544F7 /* VenuesList in Frameworks */ = {isa = PBXBuildFile; productRef = ADB3B90B2DE309DF00E544F7 /* VenuesList */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AD79B48A2DDF412800336318 /* WoltAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WoltAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB3B8FF2DE0916C00E544F7 /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Packages; sourceTree = "<group>"; };
@@ -37,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADB3B90C2DE309DF00E544F7 /* VenuesList in Frameworks */,
+				ADB3B90A2DE309DF00E544F7 /* NetworkManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +55,7 @@
 			children = (
 				ADB3B8FF2DE0916C00E544F7 /* Packages */,
 				AD79B48C2DDF412800336318 /* WoltAssignment */,
+				ADB3B9082DE309DF00E544F7 /* Frameworks */,
 				AD79B48B2DDF412800336318 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +66,13 @@
 				AD79B48A2DDF412800336318 /* WoltAssignment.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ADB3B9082DE309DF00E544F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +95,8 @@
 			);
 			name = WoltAssignment;
 			packageProductDependencies = (
+				ADB3B9092DE309DF00E544F7 /* NetworkManager */,
+				ADB3B90B2DE309DF00E544F7 /* VenuesList */,
 			);
 			productName = WoltAssignment;
 			productReference = AD79B48A2DDF412800336318 /* WoltAssignment.app */;
@@ -359,6 +376,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ADB3B9092DE309DF00E544F7 /* NetworkManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkManager;
+		};
+		ADB3B90B2DE309DF00E544F7 /* VenuesList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VenuesList;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD79B4822DDF412800336318 /* Project object */;
 }

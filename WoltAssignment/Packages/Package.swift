@@ -15,6 +15,10 @@ let package = Package(
             targets: ["DTOModels"]
         ),
         .library(
+            name: "Models",
+            targets: ["Models"]
+        ),
+        .library(
             name: "NetworkManager",
             targets: ["NetworkManager"]
         ),
@@ -27,8 +31,8 @@ let package = Package(
             targets: ["VenuesList"]
         ),
         .library(
-            name: "Views",
-            targets: ["Views"]
+            name: "Components",
+            targets: ["Components"]
         )
     ],
     targets: [
@@ -36,6 +40,9 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "DTOModels"
+        ),
+        .target(
+            name: "Models"
         ),
         .target(
             name: "NetworkManager"
@@ -50,12 +57,14 @@ let package = Package(
         .target(
             name: "VenuesList",
             dependencies: [
+                "Components",
+                "Models",
                 "NetworkManager",
                 "Services"
             ]
         ),
         .target(
-            name: "Views",
+            name: "Components",
             dependencies: [
                 "NetworkManager"
             ]

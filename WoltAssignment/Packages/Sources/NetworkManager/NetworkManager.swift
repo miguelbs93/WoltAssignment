@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-public final class NetworkManager: NetworkClient {
+public final class NetworkManager: NetworkClient, @unchecked Sendable {
     private let urlSession: URLSession
     private let imageCache = ImageCache()
     
@@ -9,7 +9,7 @@ public final class NetworkManager: NetworkClient {
         return APIConfig.baseURL
     }
     
-    init(urlSession: URLSession = .shared) {
+    public init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
     

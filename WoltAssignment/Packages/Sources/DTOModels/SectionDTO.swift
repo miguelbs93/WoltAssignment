@@ -1,16 +1,16 @@
 // MARK: - SectionDTO
 
-public struct SectionDTO: Decodable {
-    let contentId: String
-    let contentType: String?
-    let endOfSection: EndOfSection?
-    let hideDeliveryInfo: Bool?
-    let items: [Item]
-    let link: ItemLinkDTO?
-    let name: String?
-    let template: String?
-    let title: String?
-
+public struct SectionDTO: Decodable, Sendable {
+    public let contentId: String
+    public let contentType: String?
+    public let endOfSection: EndOfSectionDTO?
+    public let hideDeliveryInfo: Bool?
+    public let items: [SectionItemDTO]
+    public let link: LinkDTO?
+    public let name: String?
+    public let template: String?
+    public let title: String?
+    
     enum CodingKeys: String, CodingKey {
         case contentId = "content_id"
         case contentType = "content_type"

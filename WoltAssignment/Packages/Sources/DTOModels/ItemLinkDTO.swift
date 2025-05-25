@@ -1,13 +1,13 @@
 // MARK: - LinkDTO
 
-public struct ItemLinkDTO: Decodable {
-    let target: String
-    let targetSort: String
-    let targetTitle: String
-    let telemetryObjectId: String
-    let title: String
-    let type: String
-    let viewName: String
+public struct ItemLinkDTO: Decodable, Sendable {
+    public let target: String
+    public let targetSort: String
+    public let targetTitle: String
+    public let telemetryObjectId: String?
+    public let title: String
+    public let type: String
+    public let viewName: String
 
     enum CodingKeys: String, CodingKey {
         case target

@@ -2,18 +2,23 @@ import DTOModels
 import NetworkManager
 
 // MARK: - GetRestaurantsServiceProtocol
+
 public protocol GetRestaurantsServiceProtocol {
-    func getRestaurants(for latitude: Double, longitude: Double) async throws -> [VenueDTO]?
+    func getRestaurants(latitude: Double, longitude: Double) async throws -> RestaurantsResponseDTO?
 }
 
 // MARK: - GetRestaurantsService
-public struct GetRestaurantsService: GetRestaurantsServiceProtocol {
+
+public struct GetRestaurantsService: GetRestaurantsServiceProtocol, Sendable {
     
     private let networkManager: NetworkClient
     
-    public func getRestaurants(for latitude: Double, longitude: Double) async throws -> [VenueDTO]? {
+    public init(networkManager: NetworkClient) {
+        self.networkManager = networkManager
+    }
+    
+    public func getRestaurants(latitude: Double, longitude: Double) async throws -> RestaurantsResponseDTO? {
         let request = GetRestaurantsRequest(latitude: latitude, longitude: longitude)
-        let response = try await networkManager.request(request, responseType: [VenueDTO].self)
-        return response
+        return try await networkManager.request(request, responseType: RestaurantsResponseDTO.self)
     }
 }

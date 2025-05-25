@@ -11,7 +11,7 @@ struct GetRestaurantsRequest: HTTPRequest {
     }
     
     var path: String {
-        ""
+        "pages/restaurants"
     }
     
     var method: HTTPMethod {
@@ -23,6 +23,9 @@ struct GetRestaurantsRequest: HTTPRequest {
     }
     
     var parameters: [String : Any] {
-        [:]
+        [
+            "lat": "\(latitude)",
+            "lon": "\(longitude)"
+        ]
     }
 }
