@@ -19,9 +19,15 @@ public struct VenuesList: View {
                 }
                 
                 List(viewModel.venues) { item in
-                    VenuesRow(venue: item)
+                    VenuesRow(
+                        venue: item,
+                        isFavorite: viewModel.isFavorite(item),
+                        onFavoriteTapped: {
+                            viewModel.toggleFavorite(for: item)
+                    })
                 }
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Nearby Venues")
         }
         .onAppear {

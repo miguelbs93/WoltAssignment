@@ -1,7 +1,9 @@
 import DTOModels
 import Foundation
+import Managers
 import Models
 import Services
+import SwiftUI
 
 struct Location {
     let latitude: Double
@@ -12,6 +14,8 @@ struct Location {
 final class VenuesListViewModel: ObservableObject {
     @Published var venues: [Venue] = []
     @Published var isLoading: Bool = false
+    
+    private let favoritesManager: FavoritesManager
     
     private let locations = [
         Location(latitude: 60.169418, longitude: 24.931618),
@@ -29,7 +33,8 @@ final class VenuesListViewModel: ObservableObject {
     private var currentIndex = 0
     private var timerTask: Task<Void, Never>?
     
-    init(service: GetRestaurantsService) {
+    init(favoritesManager: FavoritesManager, service: GetRestaurantsService) {
+        self.favoritesManager = favoritesManager
         self.service = service
     }
     
@@ -48,7 +53,9 @@ final class VenuesListViewModel: ObservableObject {
     @MainActor
     func fetchVenues() async {
         let location = locations[currentIndex]
-        isLoading = true
+        withAnimation(.easeInOut(duration: 0.3)) {
+            isLoading = true
+        }
         
         do {
             let result = try await service.getRestaurants(
@@ -63,7 +70,22 @@ final class VenuesListViewModel: ObservableObject {
             debugPrint(error)
         }
         
-        isLoading = false
+        withAnimation(.easeInOut(duration: 0.3)) {
+            isLoading = false
+        }
+    }
+}
+
+// MARK: - Favorites
+
+extension VenuesListViewModel {
+    func toggleFavorite(for venue: Venue) {
+        favoritesManager.toggleFavorite(id: venue.id)
+        objectWillChange.send()
+    }
+
+    func isFavorite(_ venue: Venue) -> Bool {
+        favoritesManager.isFavorite(id: venue.id)
     }
 }
 

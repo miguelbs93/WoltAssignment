@@ -33,6 +33,10 @@ let package = Package(
         .library(
             name: "Components",
             targets: ["Components"]
+        ),
+        .library(
+            name: "Managers",
+            targets: ["Managers"]
         )
     ],
     targets: [
@@ -60,7 +64,8 @@ let package = Package(
                 "Components",
                 "Models",
                 "NetworkManager",
-                "Services"
+                "Services",
+                "Managers"
             ]
         ),
         .target(
@@ -69,9 +74,12 @@ let package = Package(
                 "NetworkManager"
             ]
         ),
+        .target(
+            name: "Managers"
+        ),
         .testTarget(
             name: "PackagesTests",
             dependencies: ["NetworkManager"]
-        ),
+        )
     ]
 )

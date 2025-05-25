@@ -6,7 +6,8 @@ import NetworkManager
 
 struct VenuesRow: View {
     let venue: Venue
-    @State var isFavorite: Bool = false
+    let isFavorite: Bool
+    let onFavoriteTapped: () -> Void
     
     var body: some View {
         HStack {
@@ -27,9 +28,7 @@ struct VenuesRow: View {
             
             Spacer()
             
-            Button(action: {
-                isFavorite.toggle()
-            }) {
+            Button(action: onFavoriteTapped) {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
                     .foregroundColor(isFavorite ? .black : .gray)
             }
