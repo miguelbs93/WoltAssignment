@@ -9,7 +9,7 @@ public protocol GetRestaurantsServiceProtocol {
 
 // MARK: - GetRestaurantsService
 
-public struct GetRestaurantsService: GetRestaurantsServiceProtocol, Sendable {
+public final class GetRestaurantsService: GetRestaurantsServiceProtocol, Sendable {
     
     private let networkManager: NetworkClient
     

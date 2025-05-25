@@ -1,6 +1,13 @@
 import Foundation
 
-public final class FavoritesManager {
+public protocol FavoritesStoring {
+    func isFavorite(id: String) -> Bool
+    func toggleFavorite(id: String)
+}
+
+// MARK:  Implementation
+
+public final class FavoritesManager: FavoritesStoring {
     private let key = "favoriteVenueIDs"
     private let defaults = UserDefaults.standard
 

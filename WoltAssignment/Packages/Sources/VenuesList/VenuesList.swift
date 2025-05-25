@@ -18,6 +18,13 @@ public struct VenuesList: View {
                     .transition(.move(edge: .top).combined(with: .opacity))
                 }
                 
+                if let message = viewModel.errorMessage {
+                    Text(message)
+                        .foregroundColor(.red)
+                        .padding()
+                        .multilineTextAlignment(.center)
+                }
+                
                 List(viewModel.venues) { item in
                     VenuesRow(
                         venue: item,
@@ -25,6 +32,9 @@ public struct VenuesList: View {
                         onFavoriteTapped: {
                             viewModel.toggleFavorite(for: item)
                     })
+                }
+                .refreshable {
+                    await viewModel.fetchVenues()
                 }
             }
             .background(Color(.systemGroupedBackground))
