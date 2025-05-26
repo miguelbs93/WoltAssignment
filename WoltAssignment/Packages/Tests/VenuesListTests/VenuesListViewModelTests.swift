@@ -41,7 +41,7 @@ final class VenuesListViewModelTests: XCTestCase {
     func testFetchVenues_successWithResults() async {
         // Arrange a mock venue
         
-        let data = try! JSONSerialization.data(withJSONObject: json, options: [])
+        let data = json.data(using: .utf8)!
         let response = try! JSONDecoder().decode(VenuesResponseDTO.self, from: data)
         
         let viewModel = makeViewModel(with: response)

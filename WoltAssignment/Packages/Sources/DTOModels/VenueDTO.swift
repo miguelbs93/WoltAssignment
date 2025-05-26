@@ -5,20 +5,20 @@ public struct VenueDTO: Decodable, Sendable {
     public let city: String?
     public let country: String
     public let currency: String
-    public let delivers: Bool
-    public let deliveryHighlight: Bool
-    public let deliveryPriceHighlight: Bool
+    public let delivers: Bool?
+    public let deliveryHighlight: Bool?
+    public let deliveryPriceHighlight: Bool?
     public let franchise: String?
     public let location: [Double]
     public let online: Bool
     public let priceRange: Int
-    public let productLine: String
+    public let productLine: String?
     public let shortDescription: String?
-    public let showWoltPlus: Bool
+    public let showWoltPlus: Bool?
     public let slug: String
     public let tags: [String]
     public let brandImage: ImageDTO?
-    public let venuePreviewItems: [VenuePreviewItemDTO]
+    public let venuePreviewItems: [VenuePreviewItemDTO]?
 
     enum CodingKeys: String, CodingKey {
         case id, name, address, city, country, currency, delivers

@@ -1,7 +1,7 @@
 // MARK: - SectionDTO
 
 public struct SectionDTO: Decodable, Sendable {
-    public let contentId: String
+    public let contentId: String?
     public let contentType: String?
     public let endOfSection: EndOfSectionDTO?
     public let hideDeliveryInfo: Bool?
